@@ -1,0 +1,508 @@
+.card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    width: 100%;
+}
+
+.card h2 {
+    margin-top: 0;
+    color: #3498db;
+    font-size: 1.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.main-container {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 1rem;
+    width: 100%;
+}
+
+/* Consistency in column structure */
+.column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Title row with consistent height */
+.title-row {
+    width: 100%;
+    height: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+/* Image container to ensure alignment */
+.image-container {
+    position: relative;
+    width: 100%;
+}
+
+/* Only apply size constraints to images within focal stack viewer columns */
+.main-container .column img {
+    width: 100%;
+    max-width: 25rem;
+    height: auto;
+    border: 0.0625rem solid #ccc;
+    cursor: crosshair;
+}
+
+.column h3 {
+    margin: 0;
+    color: #444;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+#global-slider-container {
+    margin: 1rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    width: 100%;
+}
+
+#global-slider {
+    flex: 1;
+    height: 8px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: #e0e0e0;
+    border-radius: 4px;
+    outline: none;
+}
+
+#global-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #3498db;
+    cursor: pointer;
+}
+
+#global-slider::-moz-range-thumb {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #3498db;
+    cursor: pointer;
+    border: none;
+}
+
+#slider-value {
+    font-weight: bold;
+    font-size: 1rem;
+    color: #3498db;
+    min-width: 1.5rem;
+    text-align: center;
+}
+
+/* Magnifier Glass styles */
+.magnifier {
+    position: absolute;
+    border: 2px solid rgba(52, 152, 219, 0.7);
+    border-radius: 50%;
+    cursor: none;
+    width: 100px;
+    height: 100px;
+    display: none;
+    pointer-events: none;
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: translate(-50%, -50%);
+}
+
+/* Hover Zoom Window */
+.zoom-window-container {
+    margin-top: 1rem;
+    width: 100%;
+}
+
+.zoom-window {
+    display: flex;
+    justify-content: space-between;
+    height: 300px;
+    margin-top: 0.5rem;
+    overflow: hidden;
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+.zoom-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    color: #777;
+    font-style: italic;
+}
+
+.zoom-panel {
+    flex: 1;
+    position: relative;
+    height: 100%;
+    overflow: hidden;
+    border-right: 1px solid #eee;
+}
+
+.zoom-panel:last-child {
+    border-right: none;
+}
+
+.zoom-panel img {
+    position: absolute;
+    max-width: none;
+    max-height: none;
+}
+
+.zoom-panel-label {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 0.8rem;
+    z-index: 10;
+}
+
+/* Custom scrollbar container */
+.custom-scrollbar-container {
+    width: 100%;
+    position: relative;
+}
+
+/* This will hide native scrollbar but keep functionality */
+.thumbnail-container {
+    width: 100%;
+    overflow-x: auto;
+    white-space: nowrap;
+    padding: 0.75rem 0 0.25rem 0;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.thumbnail-container::-webkit-scrollbar {
+    display: none;
+}
+
+.thumbnail-scroll {
+    display: inline-flex;
+    gap: 0.75rem;
+    padding: 0.25rem 0;
+}
+
+.thumbnail {
+    width: 180px;
+    height: 135px;
+    border: 2px solid #ddd;
+    cursor: pointer;
+    object-fit: cover;
+    transition: all 0.2s ease;
+}
+
+.thumbnail:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.thumbnail.active {
+    border: 2px solid #3498db;
+    box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.3);
+}
+
+/* Custom scrollbar styles */
+.custom-scrollbar {
+    width: 100%;
+    height: 8px;
+    background-color: #e0e0e0;
+    border-radius: 4px;
+    position: relative;
+    margin: 0.5rem 0;
+    cursor: pointer;
+}
+
+.custom-scrollbar-thumb {
+    position: absolute;
+    height: 8px;
+    background-color: #3498db;
+    border-radius: 4px;
+    top: 0;
+    left: 0;
+    width: 50px;
+    cursor: grab;
+}
+
+.custom-scrollbar-thumb:active {
+    cursor: grabbing;
+}
+
+.scrollbar-nav-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0.5rem;
+}
+
+.scroll-button {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 0.25rem 0.75rem;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.2s ease;
+}
+
+.scroll-button:hover {
+    background-color: #2980b9;
+}
+
+.scroll-button:disabled {
+    background-color: #bdc3c7;
+    cursor: not-allowed;
+}
+
+/* Controls for filter size */
+.controls {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 0.75rem 0;
+    width: 100%;
+}
+
+.size-control {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    width: 100%;
+}
+
+.size-control label {
+    min-width: 140px;
+    color: #555;
+}
+
+.size-control input[type="range"] {
+    flex: 1;
+    height: 8px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: #e0e0e0;
+    border-radius: 4px;
+    outline: none;
+}
+
+.size-control input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #3498db;
+    cursor: pointer;
+}
+
+.size-control input[type="range"]::-moz-range-thumb {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #3498db;
+    cursor: pointer;
+    border: none;
+}
+
+.size-control span {
+    min-width: 60px;
+    text-align: center;
+    font-weight: 500;
+    color: #3498db;
+}
+
+/* Improved Dataset selector styling - pill buttons */
+.dataset-selector {
+    margin: 0;
+    text-align: center;
+    user-select: none;
+    display: inline-flex;
+    background: #f1f3f5;
+    border-radius: 20px;
+    padding: 2px;
+}
+
+.dataset-selector span {
+    cursor: pointer;
+    padding: 2px 10px;
+    border-radius: 16px;
+    transition: all 0.2s ease;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #666;
+}
+
+.dataset-selector span.active {
+    background: #3498db;
+    color: white;
+    box-shadow: 0 2px 4px rgba(52, 152, 219, 0.4);
+}
+
+/* Dataset Viewer Styles */
+#dataset-slider-container {
+    margin: 1rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    width: 100%;
+    justify-content: center;
+}
+
+#dataset-slider {
+    flex: 1;
+    max-width: 600px;
+    height: 8px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: #e0e0e0;
+    border-radius: 4px;
+    outline: none;
+}
+
+#dataset-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #667eea;
+    cursor: pointer;
+}
+
+#dataset-slider::-moz-range-thumb {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #667eea;
+    cursor: pointer;
+    border: none;
+}
+
+#dataset-slider-value {
+    font-weight: bold;
+    font-size: 1rem;
+    color: #667eea;
+    min-width: 1.5rem;
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .main-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .zoom-window {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .zoom-panel {
+        height: 150px;
+        border-right: none;
+        border-bottom: 1px solid #eee;
+    }
+}
+
+/* Animated Download Button */
+/* TODO: Remove the download button animation code */
+.download-button-container {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+.download-button {
+    text-decoration: none;
+    display: block;
+}
+
+.download-button-inner {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 2rem 3rem;
+    border-radius: 15px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.download-button:hover .download-button-inner {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(102, 126, 234, 0.5);
+}
+
+.download-button-text {
+    position: relative;
+    z-index: 2;
+    text-shadow:
+        -2px -2px 0 #000,
+        2px -2px 0 #000,
+        -2px 2px 0 #000,
+        2px 2px 0 #000,
+        -2px 0 0 #000,
+        2px 0 0 #000,
+        0 -2px 0 #000,
+        0 2px 0 #000;
+}
+
+.download-button-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0.5;
+    z-index: 1;
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+}
+
+.download-button-bg img {
+    height: 100%;
+    width: 20%;
+    object-fit: cover;
+    object-position: center center;
+    margin: 0;
+    padding: 0;
+    border: none;
+    flex-shrink: 0;
+    display: block;
+}
+
+.download-button {
+    text-decoration: none !important;
+}
+
+.download-button:hover {
+    text-decoration: none !important;
+}

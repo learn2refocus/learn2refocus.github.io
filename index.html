@@ -1,26 +1,516 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>blur2vid — Coming Soon</title>
-  <style>
-    html, body { height: 100%; margin: 0; }
-    body {
-      display: grid;
-      place-items: center;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-      background: #0f1115;
-      color: #e5e7eb;
-    }
-    h1 { font-size: clamp(1.75rem, 4vw, 3rem); margin: 0 0 .25rem; letter-spacing: .02em; }
-    p  { margin: 0; opacity: .75; }
-  </style>
+    <meta charset="utf-8">
+    <meta name="description" content="Learning to Refocus with Video Diffusion Models">
+    <meta name="keywords" content="Diffusion, Focus, Refocus, Focal Stack, Video Diffusion, Computational Photography">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Learning to Refocus</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+    <link rel="icon"
+        href="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text y=%22.9em%22 font-size=%2290%22&gt;📷&lt;/text&gt;&lt;/svg&gt;">
+
+    <link rel="stylesheet" href="css/bulma.min.css">
+    <link rel="stylesheet" href="css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/focal-stack-viewer.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <head>
+        <style media="all">
+            body {
+                font-family: 'Noto Sans', sans-serif;
+            }
+
+            .selectable:hover {
+                cursor: pointer;
+                border-radius: 1em;
+                -moz-box-shadow: 0 0 10px #ccc;
+                -webkit-box-shadow: 0 0 10px #ccc;
+                box-shadow: 0 0 10px #978e8e;
+            }
+
+            .project_author {
+                display: block;
+                text-align: center;
+            }
+
+            .author_icon {
+                box-shadow: 0 0 1em grey;
+                border-radius: 50%;
+                width: 100%;
+            }
+
+            .cite_bib {
+                display: block;
+                background: #e0e0e0;
+                font-family: monospace;
+                padding: 10px;
+                border-radius: 10px;
+                overflow: scroll;
+                white-space: nowrap;
+            }
+        </style>
+    </head>
 </head>
+
 <body>
-  <main>
-    <h1>Future landing page of Learning to Refocus with Video Diffusion Models.</h1>
-    <p>Coming soon.</p>
-  </main>
+
+    <section class="hero">
+        <div class="hero-body" style="padding-bottom:0;">
+            <div class="container is-max-desktop">
+                <div class="columns is-centered">
+                    <div class="column has-text-centered">
+                        <h1 class="title is-1 publication-title text-muted">
+                            Learning to Refocus with Video Diffusion Models
+                        </h1>
+                        <div class="is-size-5 publication-authors">
+                            <span class="author-block">
+                                <a href="https://sites.google.com/view/tedlasai">SaiKiran Tedla</a><sup>1,2</sup>,
+                            </span>
+                            <span class="author-block">
+                                <a href="https://ztzhang.info/">Zhoutong Zhang</a><sup>1</sup>,
+                            </span>
+                            <span class="author-block">
+                                <a href="https://ceciliavision.github.io/">Xuaner (Cecilia) Zhang</a><sup>1</sup>,
+                            </span>
+                            <span class="author-block">
+                                <a href="https://shumianxin.github.io/">Shumian Xin</a><sup>1</sup>,
+                            </span>
+                        </div>
+                        <div class="is-size-5 publication-authors">
+                            <span class="author-block"><sup>1</sup>Adobe Research,</span>
+                            <span class="author-block"><sup>2</sup>York University</span>
+                        </div>
+                        <div class="is-size-4 publication-venue" style="margin-top: 1rem;">
+                            <strong>SIGGRAPH ASIA 2025</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="section">
+        <div class="container is-max-desktop">
+            <!-- Abstract. -->
+            <div class="columns is-centered has-text-centered">
+                <div class="column is-full">
+                    <img src="assets/teaser.svg" style="float: right; margin-left:20px; margin-bottom: 10px"
+                        width="100%;" onerror="this.onerror=null; this.src='assets/teaser.png';" />
+                    <h2 class="title is-3">Abstract</h2>
+                    <div class="content has-text-justified">
+                        <p class="content has-text-justified">
+                            Focus is a cornerstone of photography, yet autofocus systems often fail to capture the
+                            intended subject, and users frequently wish to adjust focus after capture. We introduce a
+                            novel method for realistic post-capture refocusing using video diffusion models. From a
+                            single defocused image, our approach generates a perceptually accurate focal stack,
+                            represented as a video sequence, enabling interactive refocusing and unlocking a range of
+                            downstream applications. We release a large-scale focal stack dataset acquired under diverse
+                            real-world smartphone conditions to support this work and future research. Our method
+                            consistently outperforms existing approaches in both perceptual quality and robustness
+                            across challenging scenarios, paving the way for more advanced focus-editing capabilities in
+                            everyday photography.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <!--/ Abstract. -->
+        </div>
+    </section>
+
+    <br />
+
+
+    <section class="hero teaser" id="authors">
+        <div class="hero-body">
+            <div style='border-radius:1em;box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;padding:1em;padding-left:2em;padding-right:2em;'
+                class="container is-max-desktop has-text-centered">
+                <br />
+                <h2 class="title">Authors</h2>
+                <div class="row">
+                    <div class="col-6" style='flex:0 0 25%;max-width:25%;'>
+                        <a class="project_author" href="https://sites.google.com/view/tedlasai">
+                            <img class="author_icon" src="assets/authors/Sai3.jpg">
+                            <p style='margin-top:0.5em;font-size:1.3em;font-weight:bold;'>SaiKiran Tedla</p>
+                        </a>
+                    </div>
+                    <div class="col-6" style='flex:0 0 25%;max-width:25%;'>
+                        <a class="project_author" href="https://ztzhang.info/">
+                            <img class="author_icon" src="assets/authors/zhoutong.png">
+                            <p style='margin-top:0.5em;font-size:1.3em;font-weight:bold;'>Zhoutong Zhang</p>
+                        </a>
+                    </div>
+                    <div class="col-6" style='flex:0 0 25%;max-width:25%;'>
+                        <a class="project_author" href="https://ceciliavision.github.io/">
+                            <img class="author_icon" src="assets/authors/Cecilia.jpg">
+                            <p style='margin-top:0.5em;font-size:1.3em;font-weight:bold;'>Xuaner (Cecilia) Zhang</p>
+                        </a>
+                    </div>
+                    <div class="col-6" style='flex:0 0 25%;max-width:25%;'>
+                        <a class="project_author" href="https://shumianxin.github.io/">
+                            <img class="author_icon" src="assets/authors/ShumianXin.jpg">
+                            <p style='margin-top:0.5em;font-size:1.3em;font-weight:bold;'>Shumian Xin</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="hero teaser">
+        <div class="hero-body">
+            <div style='border-radius:1em;box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;padding:1em;padding-left:2em;padding-right:2em;'
+                class="container is-max-desktop has-text-centered">
+                <br />
+                <h2 class="title">Material</h2>
+                <div class="row">
+                    <a style='max-width:min(15em,40%);margin:auto;' href='https://google.com' target="_blank">
+                        <img style='box-shadow: 0 0 1em grey;' src='assets/learning-to-refocus-paper-first-page.png'>
+                        <p style='margin-top:1em;'>arXiv</p>
+                    </a>
+                    <a style='max-width:min(15em,40%);margin:auto;margin-left:1em;margin-right:1em;'
+                        href='https://google.com' target="_blank">
+                        <img style='box-shadow: 0 0 1em grey;' src='assets/supplementary-first-page.png'>
+                        <p style='margin-top:1em;'>Supplementary</p>
+                    </a>
+                    <a style='max-width:min(15em,40%);margin:auto;margin-left:1em;margin-right:1em;'
+                        href='https://github.com/tedlasai/learn2refocus' target="_blank">
+                        <img style='border-radius:0.5em;padding:1em;box-shadow: 0 0 1em grey;width:10em;'
+                            src='assets/github.svg'>
+                        <p style='margin-top:1em;'>Code</p>
+                    </a>
+
+                    <a style='max-width:min(15em,40%);margin:auto;' href='#BibTeX'>
+                        <img style='border-radius:0.5em;padding:1em;box-shadow: 0 0 1em grey;width:10em;'
+                            src='assets/BibTeX_logo.svg'>
+                        <p style='margin-top:1em;'>BibTeX</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <br />
+
+    <!-- Focal Stack Viewer Section -->
+    <section class="hero teaser">
+        <div class="hero-body">
+            <div style='border-radius:1em;box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;padding:1em;'
+                class="container is-max-desktop has-text-centered">
+                <br />
+                <h2 class="title">Qualitative Results: Generated Focal Stack Comparisons</h2>
+                <div class="content has-text-justified">
+                    <p class="content has-text-justified">
+                        Compare different focal stacks and hover over images to view details. Select a scene from the
+                        menu below, then use the frame controls to view the generated views from all methods. The hover
+                        zoom window allows for detailed inspection of specific regions.
+                    </p>
+                </div>
+
+                <!-- Scene Selection Card -->
+                <div style='border-radius:1em;box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;padding:1em;'
+                    class="container is-max-desktop">
+                    <h4 style="text-align:left;">Scene Selection</h4>
+
+                    <!-- Custom Scrollbar Implementation -->
+                    <div class="custom-scrollbar-container">
+                        <!-- Thumbnail Selection with hidden native scrollbar -->
+                        <div class="thumbnail-container" id="thumbnail-container">
+                            <div class="thumbnail-scroll" id="thumbnail-scroll">
+                                <!-- Thumbnails will be added here dynamically -->
+                            </div>
+                        </div>
+
+                        <!-- Custom scrollbar UI -->
+                        <div class="custom-scrollbar" id="custom-scrollbar">
+                            <div class="custom-scrollbar-thumb" id="scrollbar-thumb"></div>
+                        </div>
+
+                        <!-- Navigation buttons -->
+                        <div class="scrollbar-nav-buttons">
+                            <button class="scroll-button" id="scroll-left">← Previous</button>
+                            <span class="scroll-hint" id="scroll-hint">← Scroll to see more scenes →</span>
+                            <button class="scroll-button" id="scroll-right">Next →</button>
+                        </div>
+                    </div>
+                </div>
+
+                <br />
+
+                <!-- Main Content Card -->
+                <div style='border-radius:1em;box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;padding:1em;'
+                    class="container is-max-desktop">
+
+                    <!-- Global Slider -->
+                    <div id="global-slider-container">
+                        <label for="global-slider">Select Frame:</label>
+                        <input type="range" id="global-slider" min="1" max="9" value="1" step="1" />
+                        <span id="slider-value">1</span>
+                    </div>
+
+                    <!-- Images Container with consistent column structure -->
+                    <div class="main-container">
+                        <!-- Input Column -->
+                        <div class="column">
+                            <div class="title-row">
+                                <h3 id="still-text">Input Focal Position 01</h3>
+                            </div>
+                            <div class="image-container">
+                                <img id="still-image" src="assets/focal-stack-viewer/start/img_00_position_01/start.jpg"
+                                    alt="Still Image" />
+                                <div class="magnifier" id="magnifier-still"></div>
+                            </div>
+                        </div>
+
+                        <!-- NAF/InstructPix2Pix Column -->
+                        <div class="column">
+                            <div class="title-row">
+                                <div class="dataset-selector">
+                                    <span id="naf-selector" class="active">NAF</span>
+                                    <span id="ip2p-selector">InstructPix2Pix</span>
+                                </div>
+                            </div>
+                            <div class="image-container">
+                                <img id="image1" src="assets/focal-stack-viewer/naf/img_00_position_01/frame_1.jpg"
+                                    alt="Comparison Stack" />
+                                <div class="magnifier" id="magnifier-1"></div>
+                            </div>
+                        </div>
+
+                        <!-- Ours Column -->
+                        <div class="column">
+                            <div class="title-row">
+                                <h3>Ours</h3>
+                            </div>
+                            <div class="image-container">
+                                <img id="image2" src="assets/focal-stack-viewer/ours/img_00_position_01/frame_1.jpg"
+                                    alt="Ours Stack" />
+                                <div class="magnifier" id="magnifier-2"></div>
+                            </div>
+                        </div>
+
+                        <!-- GT Column -->
+                        <div class="column">
+                            <div class="title-row">
+                                <h3>GT</h3>
+                            </div>
+                            <div class="image-container">
+                                <img id="image3" src="assets/focal-stack-viewer/gt/img_00_position_01/frame_1.jpg"
+                                    alt="GT Stack" />
+                                <div class="magnifier" id="magnifier-3"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Hover Zoom Window -->
+                    <div class="zoom-window-container">
+                        <h3>Hover Zoom Window</h3>
+                        <div class="zoom-window" id="zoom-window">
+                            <div class="zoom-placeholder">Hover over an image to visualize</div>
+                        </div>
+                    </div>
+
+                    <!-- Controls for filter size -->
+                    <div class="controls">
+                        <div class="size-control">
+                            <label for="filter-size">Hover Filter Zoom:</label>
+                            <input type="range" id="filter-size" min="1" max="6" value="3" step="0.5" />
+                            <span id="filter-size-value">3.0x</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <br />
+
+
+    <!-- Intuition Section -->
+    <section class="hero teaser">
+        <div class="hero-body">
+            <div style='border-radius:1em;box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;padding:2em;'
+                class="container is-max-desktop has-text-centered">
+                <h2 class="title" style="margin-bottom: 1.5rem;">Video Models Have Powerful Priors on Refocusing!</h2>
+                <div class="content has-text-justified" style="margin-bottom: 2rem;">
+                    <p class="content has-text-centered" style="font-size: 1.1rem; color: #555;">
+                        Video diffusion models naturally understand focus transitions. We leverage these powerful priors
+                        to design our refocusing model.
+                    </p>
+                </div>
+
+                <!-- Two-column video examples -->
+                <div class="row" style="display: flex; gap: 2rem; justify-content: center; align-items: flex-start;">
+                    <!-- Left Example -->
+                    <div class="col-6" style="flex: 1; max-width: 45%;">
+                        <div
+                            style="background: #f8f9fa; border-radius: 12px; padding: 1.5rem; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);">
+                            <video autoplay loop muted playsinline
+                                style="width: 100%; border-radius: 8px; border: 2px solid #ddd;">
+                                <source src="assets/video-diffusion-left-example.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                            <p style="margin-top: 1rem; font-style: italic; color: #666; font-size: 0.95rem;">
+                                "A focus pull of a bug on a leaf."
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Right Example -->
+                    <div class="col-6" style="flex: 1; max-width: 45%;">
+                        <div
+                            style="background: #f8f9fa; border-radius: 12px; padding: 1.5rem; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);">
+                            <video autoplay loop muted playsinline
+                                style="width: 100%; border-radius: 8px; border: 2px solid #ddd;">
+                                <source src="assets/video-diffusion-right-example.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                            <p style="margin-top: 1rem; font-style: italic; color: #666; font-size: 0.95rem;">
+                                "A focus pull of a man holding a remote."
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <br />
+
+    <!-- Dataset Section -->
+    <section class="hero teaser">
+        <div class="hero-body">
+            <div style='border-radius:1em;box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;padding:1em;'
+                class="container is-max-desktop has-text-centered">
+                <br />
+                <h2 class="title">Dataset</h2>
+                <div class="content has-text-justified">
+                    <p class="content has-text-justified">
+                        We release a large-scale focal stack dataset acquired under diverse real-world smartphone
+                        conditions. The dataset contains high-quality focal stacks captured across various scenes and
+                        lighting conditions, providing a valuable resource for future research in computational
+                        photography and focus manipulation. Each focal stack consists of 9 focal positions, enabling
+                        comprehensive evaluation of refocusing algorithms.
+                    </p>
+                </div>
+
+                <br />
+
+                <!-- Dataset Viewer -->
+                <div style='border-radius:1em;box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;padding:1em;'
+                    class="container is-max-desktop">
+                    <h4 style="text-align:left;">Dataset Examples</h4>
+
+                    <!-- Dataset Scene Selection -->
+                    <div class="custom-scrollbar-container">
+                        <div class="thumbnail-container" id="dataset-thumbnail-container">
+                            <div class="thumbnail-scroll" id="dataset-thumbnail-scroll">
+                                <!-- Dataset thumbnails will be added here dynamically -->
+                            </div>
+                        </div>
+
+                        <div class="custom-scrollbar" id="dataset-custom-scrollbar">
+                            <div class="custom-scrollbar-thumb" id="dataset-scrollbar-thumb"></div>
+                        </div>
+
+                        <div class="scrollbar-nav-buttons">
+                            <button class="scroll-button" id="dataset-scroll-left">← Previous</button>
+                            <span class="scroll-hint" id="dataset-scroll-hint">← Scroll to see more datasets →</span>
+                            <button class="scroll-button" id="dataset-scroll-right">Next →</button>
+                        </div>
+                    </div>
+
+                    <br />
+
+                    <!-- Dataset Image Display -->
+                    <div style="text-align: center; margin-bottom: 1.5rem;">
+                        <img id="dataset-image"
+                            src="assets/dataset-sample/FSK_20241026073527GMT-04:00/midsize/undistorted/RigCenter/focal_position_0000_frame_0000.jpg"
+                            alt="Dataset Sample" style="max-width: 100%; border: 2px solid #ddd; border-radius: 8px;" />
+                    </div>
+
+                    <!-- Focal Position Slider -->
+                    <div id="dataset-slider-container">
+                        <label for="dataset-slider">Focal Position:</label>
+                        <input type="range" id="dataset-slider" min="0" max="8" value="0" step="1" />
+                        <span id="dataset-slider-value">0</span>
+                    </div>
+
+                    <!-- Auto-play controls -->
+                    <div class="row" style="margin-top: 1rem; margin-bottom: 1rem;">
+                        <div class="col-4">
+                            <div id="dataset-play-button" class="selectable"
+                                style="background-color:rgb(240,240,240);border-radius:1em;padding:1em;">▶ Play</div>
+                        </div>
+                        <div class="col-4">
+                            <div id="dataset-pause-button" class="selectable"
+                                style="background-color:rgb(240,240,240);border-radius:1em;padding:1em;">⏸ Pause</div>
+                        </div>
+                        <div class="col-4">
+                            <div id="dataset-reset-button" class="selectable"
+                                style="background-color:rgb(240,240,240);border-radius:1em;padding:1em;">↻ Reset</div>
+                        </div>
+                    </div>
+                </div>
+
+                <br />
+
+                <!-- Download Button with Animated Background -->
+                <div class="download-button-container">
+                    <a href="https://cp.sync.com/files/66691398045749?view=list" target="_blank"
+                        class="download-button">
+                        <div class="download-button-inner">
+                            <div class="download-button-text">
+                                Download Full Dataset
+                            </div>
+                            <div class="download-button-bg" id="download-button-bg">
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <br />
+
+    <section class="section" id="BibTeX" style="padding-top:0;">
+        <div class="container is-max-desktop content">
+            <h2 class="title">BibTeX</h2>
+            <pre style="border-radius:1em;"><code>@inproceedings{Tedla2025Refocus,
+  title={{Learning to Refocus with Video Diffusion Models}},
+  author={{Tedla, SaiKiran and Zhang, Zhoutong and Zhang, Xuaner and Xin, Shumian}},
+  booktitle={{Proceedings of the ACM SIGGRAPH Asia Conference}},
+  year={{2025}}
+}</code></pre>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="columns is-centered">
+                <div class="column is-8">
+                    <div class="content">
+                        <p>
+                            Website template adapted from <a
+                                href="https://github.com/nerfies/nerfies.github.io">NeRFies</a> and <a
+                                href="https://photoconsistent-nvs.github.io/">Photoconsistent-NVS</a>.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/focal-stack-viewer.js"></script>
+    <script src="js/dataset-viewer.js"></script>
+
 </body>
+
 </html>
